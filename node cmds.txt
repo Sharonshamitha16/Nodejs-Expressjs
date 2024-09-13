@@ -1,0 +1,22 @@
+npm init
+npm init -y 
+npm i express
+npm uninstall express 
+node filename(index.js) 
+--chrome localhost:portnumber
+npm i nodemon -g =global installation
+--in package.json in depencies -- can make "start": nodemon filename(index.js)
+npm  start
+npm i nodemon -save dev
+
+
+
+get - data sending
+put - editing
+delete - removing
+post -editing
+
+
+
+req -- body
+headers, paraams,
