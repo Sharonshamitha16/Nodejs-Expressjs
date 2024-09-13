@@ -10,29 +10,9 @@ mongoose.connect("mongodb+srv://sharonshamitha16:Sharon@cluster0.disqq.mongodb.n
         console.log(`connection error: ${e.message}`);
 
     })
-const dressSchema = new mongoose.Schema({
-    dressname: {
-        type: String,
-        required: true
-    },
-    dresstype: {
-        type: String,
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    }, fabric: {
-        type: String,
-        required: true
-    }, count: {
-        type: Number,
-        required: true
-    },
 
-}, { timestamps: true })
 
-const dress = mongoose.model('dress', dressSchema)
+
 app.post("/dresstype", async (req, res) => {
     try {
         let dressUser = await dress.create(req.body);
@@ -47,36 +27,9 @@ app.post("/dresstype", async (req, res) => {
         });
     }
 })
-const jewellerytype = new mongoose.Schema({
-    jewelname: {
-        type: String,
-        required: true
-    },
-    jeweltype: {
-        type: String,
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    }, carat: {
-        type: String,
-        required: true
-    }, savarn: {
-        type: Number,
-        required: true
-    },
-    created: {
-        type: String
-    },
-    PhoneNum: {
-        type: Number
-    }
 
 
-}, { timestamps: true })
 
-const jewel = mongoose.model('jewel', jewellerytype)
 
 
 
