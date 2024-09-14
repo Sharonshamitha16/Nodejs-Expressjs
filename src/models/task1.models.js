@@ -1,4 +1,4 @@
-const mongoose = require ("mogoose")
+const mongoose = require ("mongoose")
 const dressSchema = new mongoose.Schema({
     dressname: {
         type: String,
@@ -21,7 +21,7 @@ const dressSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const dress = mongoose.model('dress', dressSchema)
+
 
 
 const jewellerytype = new mongoose.Schema({
@@ -52,7 +52,9 @@ const jewellerytype = new mongoose.Schema({
 
 
 }, { timestamps: true })
-const jewel = mongoose.model('jewel', jewellerytype)
+
+const dress = mongoose.model('dressfolder', dressSchema)
+const jewel = mongoose.model('jewelfolder', jewellerytype)
 
 module.exports={
     dress,

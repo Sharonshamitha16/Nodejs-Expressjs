@@ -20,3 +20,35 @@ post -editing
 
 req -- body
 headers, paraams,
+
+
+
+
+connection.js - 1) mongoose imported 
+                2)connection=mongoose.connect in a arrow function storing in a variable   and error handling
+                3) exporting the arrow function called ....
+               (e.g) module.exports(connection)
+    model.js -  1)importing mongoose
+                2)writing  schema = regschema 
+                3)register =calling mongoose.model (filename ,schemaname)
+                4)module.exports=mongoose.model variable(register)
+
+controller.js - 1) importing the model from the model.js path and storing in a varibale
+                2)reg=through aync req ,res validations like email check, psw check ,confirmation of Success msg adding through spread operator .. so on..
+                3)exporting the async function (e.g)module.exports(reg) if many functions to be exported module.exports{1stfun, 2ndfun}
+    route.js -  1) import express
+                2) import router
+                3)controller=import controller from the path were we stored controller.js
+                4)router.post( endpoint url ,the controller imported variable.controller.js's async function variable)
+                (e.g) router.post("/newregsiter",controller.reg)
+    index.js -  1)express import
+                2)connection import (path of controller.js)
+                3)router import (path of route.js)
+                4)require('dotenv').config() this should be delcared first orelse it throws error
+                5)calling express & stored in variable
+                6)use json format for express app.use(express.json())
+                7)connection() call
+                8) use router app.use(router) 
+                9)port assigned
+                10)server running statement in arrow function 
+                11)app.use('/', (req,res)) res.send server alive
