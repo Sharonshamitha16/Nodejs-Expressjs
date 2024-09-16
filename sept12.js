@@ -14,7 +14,7 @@ connection();
 app.use(router)
 
 
-const port =8000; // setting  the port 
+const port =7091; // setting  the port 
 app.listen(port,()=>{  // setting a callback function to show in console /terminal
     console.log("server running on port :", port);
     
