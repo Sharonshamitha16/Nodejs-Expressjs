@@ -7,10 +7,10 @@ const mailsend = async (email, username, password) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "sharonshamitha16@gmail.com",
-                pass: "gpfw votj wnqs dxfe"
-                // user:process.env.EMAIL_ID,
-                // pass:process.env.PASS_KEY
+                // user: "sharonshamitha16@gmail.com",
+                // pass: "gpfw votj wnqs dxfe"
+                user:process.env.EMAIL_ID,
+                pass:process.env.PASS_KEY
             },
             tls: {
                 rejectUnauthorized: false // Disable SSL verification for debugging (not recommended for production)
@@ -28,7 +28,7 @@ const mailsend = async (email, username, password) => {
     }
 
     catch (e) {
-        console.error("Error sending mail:", e.message);
+        console.error("Error sending mail:", e);
 
 
     }

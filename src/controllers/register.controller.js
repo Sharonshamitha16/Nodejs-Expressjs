@@ -34,7 +34,28 @@ const reg = async (req, res) => {// post-create method in express  call back fun
     }
 }
 
+const login =async(req,res)=>{
+    try{
+        let {email,password} =req.body;
+        const checkmail =await register.findOne({email})
+        if(!checkmail){
+            return res.status(404).json({message: "invalid mail..."})
+            
+        }
+        const checkpassword =await bcrypt.compare(password,checkmail.password)
+        if(!checkpassword){
+            return res.status(404).json({message: "invalid password..."})
+
+        }
+        res.json({checkmail,message:"login successfull...."})
+    }
+    catch(e){
+        res.json({
+            Error: error.message
+        })
+}
+}
 module.exports = {
-    reg // imported the above one const reg= async (req, res) => {
+    reg,login // imported the above one const reg= async (req, res) => {
 
 }

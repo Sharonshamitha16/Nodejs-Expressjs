@@ -1,8 +1,14 @@
 const mongoose =require("mongoose");
+const {v4}= require("uuid")
 const registerSchema = new mongoose.Schema({
+    _id:{
+        type:String,
+        default:v4
+    },
     username: {
         type: String,
         required: true
+        
     },
     email: {
         type: String,
@@ -12,6 +18,10 @@ const registerSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: true
+    },
+    userId:{
+        type:String,
+        default:v4
     },
     created:{
         type:String
