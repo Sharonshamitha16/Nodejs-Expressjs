@@ -2,6 +2,7 @@ const register = require("../models/register.model")
 const passwordGenerator = require("../utils/GeneratePassword")
 const mailsend = require('../utils/sendmail')
 const bcrypt = require('bcrypt');
+const { generateToken } = require("../middlewares/authToken")
 const reg = async (req, res) => {// post-create method in express  call back function is returned sending the user created value in req body
     try {
         let { email, username } = req.body
@@ -12,10 +13,11 @@ const reg = async (req, res) => {// post-create method in express  call back fun
         }
         let password = passwordGenerator(8);
         let hashpassword = await bcrypt.hash(password, 10)
-        
-        
+
+
+
         let data = {
-            ...req.body, 
+            ...req.body,
             password: hashpassword,
             created: "Success"
         }
@@ -34,28 +36,30 @@ const reg = async (req, res) => {// post-create method in express  call back fun
     }
 }
 
-const login =async(req,res)=>{
-    try{
-        let {email,password} =req.body;
-        const checkmail =await register.findOne({email})
-        if(!checkmail){
-            return res.status(404).json({message: "invalid mail..."})
-            
+const login = async (req, res) => {
+    try {
+        let { email, password } = req.body;
+        const checkmail = await register.findOne({ email })
+        if (!checkmail) {
+            return res.status(404).json({ message: "invalid mail..." })
         }
-        const checkpassword =await bcrypt.compare(password,checkmail.password)
-        if(!checkpassword){
-            return res.status(404).json({message: "invalid password..."})
+        const checkpassword = await bcrypt.compare(password, checkmail.password)
+        if (!checkpassword) {
+            return res.status(404).json({ message: "invalid password..." })
 
         }
-        res.json({checkmail,message:"login successfull...."})
+        let token = generateToken(checkmail.userId)
+        console.log("test", token);
+
+        res.json({ checkmail, token, message: "login successfull...." })
     }
-    catch(e){
+    catch (e) {
         res.json({
-            Error: error.message
+            Error: e.message
         })
-}
+    }
 }
 module.exports = {
-    reg,login // imported the above one const reg= async (req, res) => {
+    reg, login // imported the above one const reg= async (req, res) => {
 
 }
