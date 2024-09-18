@@ -52,3 +52,10 @@ controller.js - 1) importing the model from the model.js path and storing in a v
                 9)port assigned
                 10)server running statement in arrow function 
                 11)app.use('/', (req,res)) res.send server alive
+
+
+
+
+
+npm i bcrypt 
+npm i nodemailer

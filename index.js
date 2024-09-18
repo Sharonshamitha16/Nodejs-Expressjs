@@ -2,7 +2,7 @@ const express = require ("express"); //import statement by calling the express p
 const mongoose = require("mongoose")
 const app = express(); // this is what calling the function and saving inn variable
 app.use(express.json());
-
+require('dotenv').config()
 // mongoose.connect("mongodb+srv://sharonshamitha16:Sharon@cluster0.disqq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 mongoose.connect("mongodb+srv://snandhadeveloper592000:nandha56200@cluster0.s6ufz.mongodb.net/server_006?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
